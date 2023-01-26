@@ -226,7 +226,7 @@ epub_exclude_files = ['search.html']
 
 # -- Options for myst_nb -----------------------------------------------------
 nb_execution_timeout = 120
-nb_execution_in_temp = True
+nb_execution_in_temp = False
 nb_execution_raise_on_error = True
 nb_number_source_lines = True
 nb_output_stderr = 'remove'
