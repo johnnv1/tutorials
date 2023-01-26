@@ -5,11 +5,15 @@ build:
   tools:
     python: "3.10"
   jobs:
-    pre_create_environment:
-      - make setup purge generate
+    pre_build:
+      - make purge generate
 
 
 sphinx:
   builder: html
   configuration: tutorials/conf.py
 
+python:
+  install:
+    - requirements: requirements.txt
+    - requirements: requirements-dev.txt
