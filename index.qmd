@@ -1,0 +1,17 @@
+---
+title: "Kornia tutorials"
+listing:
+  contents: nbs/
+  sort: 
+    - "date desc"
+    - "title desc"
+  type: default
+  categories: true
+  sort-ui: true
+  filter-ui: true
+  fields: [date, title, author, categories, description] # image,
+page-layout: full
+title-block-banner: true
+---
+
+

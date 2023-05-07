@@ -1,32 +1,34 @@
 SOURCEDIR     = nbs
-DOCSDIR       = tutorials
-DOCSDIRNBS    = $(DOCSDIR)/_nbs
 
 .PHONY: purge generate execute sphinx build setup check-deps
 
 purge:
-	@echo "\n\nRemoving all notebooks under '$(DOCSDIRNBS)'...\n"
-	rm -f $(DOCSDIRNBS)/*.ipynb
 	@echo "\nRemoving all files that are not notebooks on '$(SOURCEDIR)'...\n"
 	find $(SOURCEDIR) -type f ! -name "*.ipynb" -delete
-	@echo "\n"
-	@cd $(DOCSDIR); make purge
 
 generate:
-	@echo "\n\nGenerating all tutorials notebooks to '$(DOCSDIRNBS)'...\n"
-	jupyter nbconvert $(SOURCEDIR)/**.ipynb --to notebook --output-dir $(DOCSDIRNBS)
+	@echo "\n\nGenerating all tutorials notebooks to '$(SOURCEDIR)'...\n"
+	jupyter nbconvert $(SOURCEDIR)/**.ipynb --to notebook --output-dir $(SOURCEDIR)
 
 execute:
-	@echo "\n\nExecuting all tutorials notebooks under '$(DOCSDIRNBS)'...\n"
-	jupyter nbconvert $(DOCSDIRNBS)/**.ipynb --execute --inplace
+	@echo "\n\nExecuting all tutorials notebooks under '$(SOURCEDIR)'...\n"
+	jupyter nbconvert $(SOURCEDIR)/**.ipynb --execute --inplace
 
-sphinx:
-	cd $(DOCSDIR); make clean html
+build: purge generate render
 
-build: purge generate sphinx
+setup-quarto:
+	curl -LO https://www.quarto.org/download/latest/quarto-linux-amd64.deb
+	sudo dpkg -i *64.deb && rm *64.deb
 
 setup:
-	pip install -r requirements.txt && pip install -r requirements-dev.txt
+	pip install -r requirements.txt && pip install -r requirements-dev.txt;
+	make setup-quarto
+
+preview:
+	quarto preview .
+
+render:
+	quarto render .
 
 check-deps:
 	@which python

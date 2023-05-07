@@ -1,0 +1,54 @@
+project:
+  output-dir: _site
+  type: website
+
+website:
+  title: "Kornia tutorials"
+  favicon: "tutorials/_static/img/kornia_logo_favicon.png"
+  page-navigation: true
+  site-url: https://kornia.org
+  repo-url: https://github.com/kornia/tutorials/
+  repo-actions: [edit, source, issue]
+
+  navbar:
+    collapse: false
+    pinned: true
+    search: true
+    logo: "tutorials/_static/img/kornia_logo.svg"
+    right:
+      - icon: github
+        href: https://github.com/kornia/
+      - icon: twitter
+        href: https://twitter.com/kornia_foss
+      - icon: linkedin
+        href: https://www.linkedin.com/company/kornia/
+  page-footer:
+    left: Copyright © 2023 Kornia. All Rights Reserved.
+    right:
+      - icon: question-circle-fill
+        href: https://github.com/kornia/kornia/discussions
+      - icon: lightbulb-fill
+        href: https://github.com/kornia/kornia/
+      - icon: twitter
+        href: https://twitter.com/kornia_foss
+      - icon: linkedin
+        href: https://www.linkedin.com/company/kornia/
+format:
+  html:
+    link-external-newwindow: true
+    link-external-icon: true
+    number-sections: false
+    fig-responsive: true
+    theme:
+      light: 
+        - litera
+        - tutorials/_static/css/styles_light.css
+      dark: 
+        - solar
+        - tutorials/_static/css/styles_dark.css
+    toc: true
+    toc-depth: 5
+    code-overflow: scroll
+
+
+
