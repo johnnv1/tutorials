@@ -18,7 +18,8 @@ build: purge generate render
 
 setup-quarto:
 	curl -LO https://www.quarto.org/download/latest/quarto-linux-amd64.deb
-	sudo dpkg -i *64.deb && rm *64.deb
+	sudo dpkg -i quarto-linux-amd64.deb
+	rm quarto-linux-amd64.deb
 
 setup:
 	pip install -r requirements.txt && pip install -r requirements-dev.txt;
